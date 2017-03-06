@@ -538,11 +538,142 @@ Consists of the design of the software architecture, inter/intra-component inter
 
 ### D1
 
+for the D1 we take all Ax and we do the software architecture.
+
+The main difference between the Analysis and the Design phase is that the design pahse is all about structuring and classification of solutions to the problems presented until now.
 
 
+The machine is composed by **components** and **connectors**.
+
+#### UML
+
+The difference now between the normal UML elements is now it specifies ports of communications between components!
+
+* *parts* are rectangles, denote **components**
+    * Parts = Components = Objects or Classes
+* *connectors* are lines between 2 ports and may have names
+* *ports* are small square/rectangles and denote interactions points of a part with its environment; may have names as well.
+    * interfaces detail connectors using the ports
+    * ports can be provided or required interfaces
+        * The required interfaces are half a circle, this required interfaces are those which the component needs to work or do the job
+        * the provided interfaces are a **full** circle, this provided interfaces are those which the component provides for the external component to comunicate, is basically the interface provided so that the components can communicate.
+    * Example of provided and required interfaces are
+        * Provided `JavaData` as it comes from the external component
+        * Required `JavaCommands` and the commands are required to communicate.
+    * In the mappings, the required interface the `<<use>>` stereotype in the connection is used.
+    * In the mappings, the provided interface is modeled through interface realization. `--|>` (inheritance, generalization)
+    * Comming from the problem diagrams, when the machine calls something from another component, then the port interface of the component in the design phase will be a required one.
+    * Comming from the PD, when a component calls something from the machine, then the port interface of the component in the design phase will be a provided one.
+
+#### Architectural Styles
+
+1. Pipes and filters, from the UNIX programming environment.
+    * Pipes move data from a filter output to a filter input
+    * filters transform streams of input data into streams of output data in an incermental way
+    * Fits better in the transformation problem frame
+2. Repository architecture
+    * The integration of data in an important goal, as they all share a common data.
+    * query and update problem frames fit the best in this case
+3. Layered architecture
+    * only connected to adjacent layers and shuold not have layer bridging at all!
+    * ISO/OSI reference model for communication protocols.
+
+#### Making the Diagrams and mappings
+
+It is important to set the mappings from the Ax to D1!
+
+This is made by setting up the architectural diagram and then mapping it, it is important to tell what phenomenas are used in the **ports** and which of them they can relate from the A3 (sequence diagrams), this is called refining `app_if`.
+
+If the phenomena is a required one, then use the `<<use>>` stereotype. else use the inheritance (the generalization).
+
+`tech_if`...
+
+Summary:
+
+* Always when having ports, "refine" them means that it has to be mapped to which phenomenas is being related (use A3)
+* Do mappings when introducing new components.
 
 
+### D2 - Inter
 
+Inter component interaction.
+
+Uses the OCL code and the D1 + A3. Remember to define the SQL commands executed against a database!
+
+This phase is about doing sequence diagrams to explain the interaction between the components, the calls shall implement all the parameters from the function already, consistent with the preliminary class in A5, I think...
+
+Is weirdly the largest chapter but I dont have anything to say...
+
+### D3 - Intra
+
+something about the intra-components, never did it heard no one doing it; mock exam didnt had it...
+
+You know what it means, but is usually defined if no ORM is used for instance.
+
+### D4 - State Machines!
+
+Consists of states and transitions between these states.
+
+* A transition is a basic `--->` arrowed line with `e[g]/a` on top.
+    * A transition is taken when g is true and e occurs. then a is sent/executed.
+    * `in1/out1`
+* The initial state is a black circle. `•-->`.
+* The final state is a cross `---> X` or a black circle inside a circle `-->@`.
+* `back` is a trigger for a transition to move back to the default state.
+
+Simple example
+
+```
+      ----------
+     |   Idle   |-----------------------
+      ----------                        |
+                                        | doGet(new Request('def'))/response.println(defaultWebpage())
+                                        |
+                                        |             ----------
+                                         ----------->| default  |
+                                        |             ----------
+                                        | back/response.println(defaultWebpage())
+   -------------                        | 
+  |   Another   |<----------------------
+   ------------- doGet(new Request('another))/response.println(anotherWebPage())
+
+
+```
+
+
+## Implementation and testing
+
+### Implementation
+
+Testing software:
+
+* Unit testing
+* Component Test/Integration Test
+    * Goal: examine whether the components cooperate according to the architecture and reduce the number of the stubs to be implemented.
+    * Two ways, top-down or bottom-up-integration
+    * top-down requires more test stubs which simulate the activity of the missing components; implementation can be critical
+    * bottom-up requires test drivers, which call a particular component and pass test cases to it, generally easy to implement.
+* System Test
+* Acceptance Test
+
+
+* **Failure** software does not do what the specification describes.
+* **Error, fault** cause of failure, error: mistake by a human when programming some software activity. can lead to a fault
+
+### Testing
+There's a lot of testing involved but no idea of what the fuck is going on there in the slides.
+Basically explain how to do unit tests, integration tests and system tests, and somehow acceptance test.
+
+
+## Correct Algorithms
+
+proving a loop
+
+1. Show that P is true before the loop begins: `{Q} init {P}`
+2. Show `{P and b} S {P}`, i.e. P is indeed an invariant
+3. Show `P and not b => R`, i.e. when the loop terminates the postcondition is fulfilled.
+4. Show `P and b => t > 0`, i.e. as long as the loop has not terminated, t is bounded from below
+5. Show `{P and b} t1 := t; S {t < t1}`, i.e. each loop iteration is guarateed to decrease the boud function. the variable t1 must be new
 
 
 
