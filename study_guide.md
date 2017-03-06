@@ -668,7 +668,7 @@ Basically explain how to do unit tests, integration tests and system tests, and 
 
 ## Correct Algorithms
 
-proving a loop of `{Q} init; while b do S od {R}`
+proving a loop of `{Q} init; while b do S od {R}` for a given invariant *P* and bound function *t*.
 
 1. Show that P is true before the loop begins: `{Q} init {P}`
 2. Show `{P and b} S {P}`, i.e. P is indeed an invariant
