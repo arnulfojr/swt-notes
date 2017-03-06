@@ -532,18 +532,19 @@ LCvacation_rental = (||n, i=1 LCguest_i) || (||m, j=1 LCmember_j) || Reset*
 // where the ||x, x=n LCa_x denotes the parallel composition of n copies of the life-cycle
 ```
 
+
 ## Design
 
 Consists of the design of the software architecture, inter/intra-component interaction and complete component or class behaviour
 
 ### D1
-
-for the D1 we take all Ax and we do the software architecture.
+For the D1 we take all Ax and we do the software architecture.
 
 The main difference between the Analysis and the Design phase is that the design pahse is all about structuring and classification of solutions to the problems presented until now.
 
 
 The machine is composed by **components** and **connectors**.
+
 
 #### UML
 
