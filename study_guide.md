@@ -667,7 +667,7 @@ Basically explain how to do unit tests, integration tests and system tests, and 
 
 ## Correct Algorithms
 
-proving a loop
+proving a loop of `{Q} init; while b do S od {R}`
 
 1. Show that P is true before the loop begins: `{Q} init {P}`
 2. Show `{P and b} S {P}`, i.e. P is indeed an invariant
