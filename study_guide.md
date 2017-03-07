@@ -308,7 +308,7 @@ OCL expressions are always bounded to a UML model! Since this language is basica
 2. Pre condition, a constraint that must be true before the execution of an operation.
 3. Post condition, a constraint that must be true after the execution of an operation.
 
-Syntax:
+Syntax for the invariant type:
 
 ```ocl
 context <identifier> <constraintType> [<constraintName>]: <boolean expression>
@@ -678,6 +678,11 @@ proving a loop of `{Q} init; while b do S od {R}` for a given invariant *P* and 
 
 
 
+# Keywords
+
+* Requirements, facts, assumptions -> A1
+* Class Diagram, can be anything, easy, just start doing UML!
+* Problem diagrams, A2
 
 
 
